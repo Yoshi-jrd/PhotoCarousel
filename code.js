@@ -1,13 +1,17 @@
+let content = document.querySelector('.contentWrapper')
 
 //Creating div's on the page
 let geoLocDiv = document.createElement('div')
-document.body.append(geoLocDiv)
+geoLocDiv.classList = `coords`
+content.append(geoLocDiv)
 
 let imgDiv = document.createElement('div')
-document.body.append(imgDiv)
+imgDiv.classList = `img`
+content.append(imgDiv)
 
 let linkDiv = document.createElement('div')
-document.body.append(linkDiv)
+linkDiv.classList = `link`
+content.append(linkDiv)
 
 // Constructor functions
 let photosArray = []
@@ -26,7 +30,7 @@ function imgDivConstructor(photosArray) {
 }
 function imgLinkDivConstructor(photosArray) {
     let imgStaticLink = assembleStaticImageURL(photosArray[0])
-    linkDiv.innerHTML = `<a href = '${imgStaticLink}' target = '_blank'>Click to view on Flickr</a>`
+    linkDiv.innerHTML = `<a href = '${imgStaticLink}' target = '_blank'>View on <em><u><b>Flickr</b></u></em></a>`
 }
 
 // Image and link constructors for incrementing through the photos
@@ -36,7 +40,7 @@ function imgDivIncrementorConstructor(photosArray) {
 }
 function imgLinkDivIncrementorConstructor(photosArray) {
     imgStaticLink = assembleStaticImageURL(photosArray[photoIncrement])
-    linkDiv.innerHTML = `<a href = '${imgStaticLink}' target = '_blank'>Click to view on Flickr</a>`
+    linkDiv.innerHTML = `<a href = '${imgStaticLink}' target = '_blank'>View on <em><u><b>Flickr</b></u></em></a>`
 }
 
 //API request for photos
@@ -63,7 +67,7 @@ setInterval(() => {
     } else {
         photoIncrement = 0
     }
-}, 5000)
+}, 7000)
 
 //Callbacks for watchPosition()
 function success (position) {
@@ -84,7 +88,7 @@ function fail () {
 
 let options = {
     enableHighAccuracy: true,
-    timeout: 10000,
+    timeout: 7000,
     maximumAge: 0
 }
 
